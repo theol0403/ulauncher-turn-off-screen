@@ -17,7 +17,7 @@ class TurnOffScreen(Extension):
 class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension):
-        subprocess.Popen('xset dpms force off', shell=True)
+        subprocess.Popen('dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.SetActive boolean:true', shell=True)
         return HideWindowAction()
 
 
